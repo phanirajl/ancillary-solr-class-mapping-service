@@ -31,16 +31,13 @@ public class CassandraConfig {
     @Value("${cassandra.keyspace}")
     private String keySpace;
 
-    @Value("${cassandra.clustername}")
-    private String clusterName;
-
+    
     @Bean(name = "cluster")
     public Cluster cluster() {
 
         return Cluster.builder()
                       .addContactPoint(contactPoints)
                       .withPort(port)
-                      .withClusterName(clusterName)
                       .withoutMetrics()
                       .build();
     }
